@@ -1,0 +1,20 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane fx:controller="com.balwinski.contacts.Controller"
+            xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <MenuBar>
+            <Menu text="Contact">
+                <MenuItem text="New..."/>
+                <MenuItem text="Edit"/>
+                <MenuItem text="Delete"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    <center>
+        <Label text="Test label in center"/>
+    </center>
+</BorderPane>
+<!--<GridPane fx:controller="com.balwinski.contacts.Controller"-->
+<!--          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">-->
+<!--</GridPane>-->
