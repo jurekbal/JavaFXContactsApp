@@ -7,13 +7,15 @@
         <MenuBar>
             <Menu text="Contact">
                 <MenuItem text="New" onAction="#showNewContactDialog"/>
-                <MenuItem text="Edit"/>
-                <MenuItem text="Delete"/>
+                <MenuItem text="Edit" onAction="#showEditContactDialog"/>
+                <MenuItem text="Delete" onAction="#handleDelete"/>
+                <SeparatorMenuItem/>
+                <MenuItem text="Exit" onAction="#handleExit"/>
             </Menu>
         </MenuBar>
     </top>
     <center>
-        <TableView fx:id="tableView">
+        <TableView fx:id="tableView" onKeyPressed="#handleKeyPressed">
             <columns>
                 <TableColumn text="First Name" prefWidth="100">
                     <cellValueFactory>

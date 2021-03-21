@@ -24,8 +24,20 @@ public class DialogController {
         String phoneNumber = phoneNumberField.getText().trim();
         String notes = notesField.getText().trim();
 
-        Contact contact = new Contact(firstName, lastName, phoneNumber, notes);
-        ContactData.getInstance().addContact(contact);
-        return null;
+        return new Contact(firstName, lastName, phoneNumber, notes);
+    }
+
+    public void editContact(Contact contact) {
+        this.firstNameField.setText(contact.getFirstName());
+        this.lastNameField.setText(contact.getLastName());
+        this.phoneNumberField.setText(contact.getPhoneNumber());
+        this.notesField.setText(contact.getNotes());
+    }
+
+    public void updateContact(Contact contact){
+        contact.setFirstName(firstNameField.getText().trim());
+        contact.setLastName(lastNameField.getText().trim());
+        contact.setPhoneNumber(phoneNumberField.getText().trim());
+        contact.setNotes(notesField.getText().trim());
     }
 }

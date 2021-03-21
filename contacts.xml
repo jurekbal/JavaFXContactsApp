@@ -13,9 +13,21 @@
 	<notes>An ordinary citizen</notes>
 </contact>
 <contact>
-	<first_name>Karol</first_name>
-	<last_name>Mościcki</last_name>
-	<phone_number>545633</phone_number>
-	<notes>przyjaciel</notes>
+	<first_name>Marian</first_name>
+	<last_name>Świstak</last_name>
+	<phone_number>4343</phone_number>
+	<notes>brak danych</notes>
+</contact>
+<contact>
+	<first_name>Franciszek</first_name>
+	<last_name>Zygalski</last_name>
+	<phone_number>22333444</phone_number>
+	<notes>Nazwisko na Z</notes>
+</contact>
+<contact>
+	<first_name>Anna</first_name>
+	<last_name>Purna</last_name>
+	<phone_number>66788</phone_number>
+	<notes>fine</notes>
 </contact>
 </contacts>

@@ -5,10 +5,10 @@ import javafx.beans.property.StringProperty;
 
 public class Contact {
 
-    private StringProperty firstName;
-    private StringProperty lastName;
-    private StringProperty phoneNumber;
-    private StringProperty notes;
+    private final StringProperty firstName;
+    private final StringProperty lastName;
+    private final StringProperty phoneNumber;
+    private final StringProperty notes;
 
     public Contact() {
         this("", "", "", "");

@@ -7,12 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class Main extends Application {
 
     @Override
-    public void init() throws Exception {
+    public void init() {
         ContactData.getInstance().loadContacts();
 //        ContactData.getInstance().loadTestContacts();
     }
@@ -26,7 +24,7 @@ public class Main extends Application {
     }
 
     @Override
-    public void stop() throws Exception {
+    public void stop() {
         ContactData.getInstance().saveContacts();
     }
 
