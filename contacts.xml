@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contacts>
+<contact>
+	<first_name>Adam</first_name>
+	<last_name>Mickiewicz</last_name>
+	<phone_number>12345</phone_number>
+	<notes>Polish writer and poet</notes>
+</contact>
+<contact>
+	<first_name>John</first_name>
+	<last_name>Smith</last_name>
+	<phone_number>9876755</phone_number>
+	<notes>An ordinary citizen</notes>
+</contact>
+</contacts>
