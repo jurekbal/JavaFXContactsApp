@@ -1,13 +1,14 @@
 package com.balwinski.contacts.datamodel;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Contact {
 
-    private SimpleStringProperty firstName;
-    private SimpleStringProperty lastName;
-    private SimpleStringProperty phoneNumber;
-    private SimpleStringProperty notes;
+    private StringProperty firstName;
+    private StringProperty lastName;
+    private StringProperty phoneNumber;
+    private StringProperty notes;
 
     public Contact() {
         this("", "", "", "");
@@ -28,12 +29,20 @@ public class Contact {
         this.firstName.set(firstName);
     }
 
+    public StringProperty firstNameProperty() {
+        return this.firstName;
+    }
+
     public String getLastName() {
         return lastName.get();
     }
 
     public void setLastName(String lastName) {
         this.lastName.set(lastName);
+    }
+
+    public StringProperty lastNameProperty() {
+        return this.lastName;
     }
 
     public String getPhoneNumber() {
@@ -44,11 +53,19 @@ public class Contact {
         this.phoneNumber.set(phoneNumber);
     }
 
+    public StringProperty phoneNumberProperty(){
+        return this.phoneNumber;
+    }
+
     public String getNotes() {
         return notes.get();
     }
 
     public void setNotes(String notes) {
         this.notes.set(notes);
+    }
+
+    public StringProperty notesProperty() {
+        return this.notes;
     }
 }

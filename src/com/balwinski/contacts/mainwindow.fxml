@@ -6,7 +6,7 @@
     <top>
         <MenuBar>
             <Menu text="Contact">
-                <MenuItem text="New..."/>
+                <MenuItem text="New" onAction="#showNewContactDialog"/>
                 <MenuItem text="Edit"/>
                 <MenuItem text="Delete"/>
             </Menu>
