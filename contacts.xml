@@ -22,12 +22,18 @@
 	<first_name>Franciszek</first_name>
 	<last_name>Zygalski</last_name>
 	<phone_number>22333444</phone_number>
-	<notes>Nazwisko na Z</notes>
+	<notes>last name starts with Z</notes>
 </contact>
 <contact>
 	<first_name>Anna</first_name>
 	<last_name>Purna</last_name>
 	<phone_number>66788</phone_number>
 	<notes>fine</notes>
+</contact>
+<contact>
+	<first_name>John</first_name>
+	<last_name>Doe</last_name>
+	<phone_number>00112343</phone_number>
+	<notes>simple John</notes>
 </contact>
 </contacts>

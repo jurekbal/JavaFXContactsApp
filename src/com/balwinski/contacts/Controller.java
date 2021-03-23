@@ -22,11 +22,7 @@ public class Controller {
     private ContextMenu contextMenu;
 
     public void initialize() {
-//        SortedList<Contact> sortedList = new SortedList<>(ContactData.getInstance().getContacts(),
-//                ((o1, o2) -> o1.getLastName().compareTo(o2.getLastName()))
-//        );
-//        sortedList.comparatorProperty().bind(tableView.comparatorProperty());
-//        tableView.setItems(sortedList);
+
         tableView.setItems(ContactData.getInstance().getContacts());
 
         //uzyskujemy dostęp do wiersza (TableRow) aby przypisać właściwy kontekst dla menu podręcznego
@@ -52,22 +48,12 @@ public class Controller {
         });
     }
 
-    private void delete(Contact contact) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Delete contact");
-        alert.setHeaderText("Delete contact " + contact.getFirstName() + " " + contact.getLastName() + "?");
-        alert.setContentText("Are You Sure? Press OK to confirm");
-        Optional<ButtonType> confirmation = alert.showAndWait();
-        if (confirmation.isPresent() && confirmation.get() == ButtonType.OK) {
-            ContactData.getInstance().deleteContact(contact);
-        }
-    }
-
+    @FXML
     public void showNewContactDialog(ActionEvent actionEvent) {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(tableView.getScene().getWindow());
         dialog.setTitle("Add new contact");
-        dialog.setHeaderText("Fill details of the contact");
+        dialog.setHeaderText("Fill details of new contact");
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("contactDialog.fxml"));
         try {
@@ -84,12 +70,23 @@ public class Controller {
         Optional<ButtonType> result = dialog.showAndWait();
         if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
             DialogController controller = fxmlLoader.getController();
-            Contact contact = controller.addNewContact();
-            ContactData.getInstance().addContact(contact);
+            Contact newContact = controller.addNewContact();
+            ContactData.getInstance().addContact(newContact);
         }
     }
 
+    @FXML
     public void showEditContactDialog(ActionEvent actionEvent) {
+        Contact selectedContact = tableView.getSelectionModel().getSelectedItem();
+        if (selectedContact == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No contact selected");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select the contact to edit");
+            alert.showAndWait();
+            return;
+        }
+
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(tableView.getScene().getWindow());
         dialog.setTitle("Edit contact");
@@ -105,15 +102,13 @@ public class Controller {
         }
 
         DialogController dialogController = fxmlLoader.getController();
-        Contact contact = tableView.getSelectionModel().getSelectedItem();
-        dialogController.editContact(contact);
-
+        dialogController.editContact(selectedContact);
         dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
 
         Optional<ButtonType> result = dialog.showAndWait();
         if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
-            dialogController.updateContact(contact);
+            dialogController.updateContact(selectedContact);
         }
     }
 
@@ -124,12 +119,28 @@ public class Controller {
 
     public void handleKeyPressed(KeyEvent keyEvent) {
         Contact contact = tableView.getSelectionModel().getSelectedItem();
-        if(contact != null) {
-            if(keyEvent.getCode().equals(KeyCode.DELETE)){
-                delete(contact);
-            }
+        if (keyEvent.getCode().equals(KeyCode.DELETE)) {
+            delete(contact);
         }
+    }
 
+    private void delete(Contact contact) {
+        if (contact == null) {
+            Alert noSelectionAlert = new Alert(Alert.AlertType.INFORMATION);
+            noSelectionAlert.setTitle("No contact selected");
+            noSelectionAlert.setHeaderText(null);
+            noSelectionAlert.setContentText("Please select the contact to edit");
+            noSelectionAlert.showAndWait();
+            return;
+        }
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Delete contact");
+        confirmationAlert.setHeaderText("Delete contact " + contact.getFirstName() + " " + contact.getLastName() + "?");
+        confirmationAlert.setContentText("Are You Sure? Press OK to confirm");
+        Optional<ButtonType> confirmation = confirmationAlert.showAndWait();
+        if (confirmation.isPresent() && confirmation.get() == ButtonType.OK) {
+            ContactData.getInstance().deleteContact(contact);
+        }
     }
 
     public void handleExit(ActionEvent actionEvent) {

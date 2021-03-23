@@ -9,3 +9,7 @@ Java FX challenge project - simple contact management application.
 
 Code for handling XML operations has been provided by the course (it's not mine).
 
+### To do
+Validations for user imputs
+Validations for XML data (empty values crashes application)
+
